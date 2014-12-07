@@ -49,10 +49,10 @@ median(totalsteps$steps)
 
 
 ```r
-library(ggplot2)
 Avgsteps <- aggregate(activity[,"steps"], by=list(activity$interval), FUN=mean, na.rm=TRUE)
 names(Avgsteps) <- c("interval","steps")
-plot(Avgsteps$interval, Avgsteps$steps, type="l", xlab="Time Intervals (5-minute)",ylab = "Mean Steps", main = "Average Steps Taken at 5 minute Intervals")
+plot(Avgsteps$interval, Avgsteps$steps, type="l", xlab="Time Intervals (5-minute)", 
+     ylab = "Mean Steps", main = "Average Steps Taken at 5 minute Intervals")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
@@ -160,7 +160,8 @@ updactivity$day <- ifelse(days == "Saturday" | days == "Sunday", "Weekend", "Wee
 library(lattice)
 Avgstepsday <- aggregate(updactivity[,"steps"], by=list(updactivity$interval,updactivity$day), FUN=mean)
 names(Avgstepsday) <- c("interval","daytype", "steps")
-xyplot(steps ~ interval | daytype, Avgstepsday, type = "l", layout = c(1, 2), xlab = "Interval", ylab = "Number of Steps")
+xyplot(steps ~ interval | daytype, Avgstepsday, type = "l", layout = c(1, 2), xlab = "Interval", 
+       ylab = "Number of Steps")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
